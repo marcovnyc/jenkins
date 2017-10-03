@@ -4,18 +4,18 @@ jenkinsslave2:
 jenkinsslave1:
   container_name: jenkinsslave1
   build: jenkinsslave1
-jenkinsdockerslave1:
-  container_name: jenkinsdockerslave1
-  build: jenkinsdockerslave1
-  volumes:                                                                                                                                                                    
-    - /var/run/docker.sock:/var/run/docker.sock                                                                                                                               
-    - /var/lib/docker:/var/lib/docker           
 jenkinsdockerslave2:
   container_name: jenkinsdockerslave2
   build: jenkinsdockerslave2
   volumes:                                                                                                                                           $
     - /var/run/docker.sock:/var/run/docker.sock                                                                                                      $
     - /var/lib/docker:/var/lib/docker
+jenkinsdockerslave1:
+  container_name: jenkinsdockerslave1
+  build: jenkinsdockerslave1
+  volumes:                                                                                                                                                                    
+    - /var/run/docker.sock:/var/run/docker.sock                                                                                                                               
+    - /var/lib/docker:/var/lib/docker           
 jenkins:
   build: jenkins
   container_name: jenkins
