@@ -1,3 +1,6 @@
+jenkinsslave2:
+  container_name: jenkinsslave2
+  build: jenkinsslave2
 jenkinsslave1:
   container_name: jenkinsslave1
   build: jenkinsslave1
@@ -7,6 +10,12 @@ jenkinsdockerslave1:
   volumes:                                                                                                                                                                    
     - /var/run/docker.sock:/var/run/docker.sock                                                                                                                               
     - /var/lib/docker:/var/lib/docker           
+jenkinsdockerslave1:
+  container_name: jenkinsdockerslave2
+  build: jenkinsdockerslave2
+  volumes:                                                                                                                                           $
+    - /var/run/docker.sock:/var/run/docker.sock                                                                                                      $
+    - /var/lib/docker:/var/lib/docker
 jenkins:
   build: jenkins
   container_name: jenkins
@@ -15,7 +24,9 @@ jenkins:
     - "50000:50000"
   links:
     - jenkinsslave1
+    - jenkinsslave2
     - jenkinsdockerslave1
+    - jenkinsdockerslave2
   volumes:                                                                                                                                                                    
     - /var/run/docker.sock:/var/run/docker.sock                                                                                                                               
     - /var/lib/docker:/var/lib/docker           
@@ -27,5 +38,15 @@ jenkinssetup:
 jenkinsswarmslave1:
   container_name: jenkinsswarmslave1
   build: jenkinsswarmslave1
+  links:
+    - jenkins
+jenkinsswarmslave2:
+  container_name: jenkinsswarmslave2
+  build: jenkinsswarmslave2
+  links:
+    - jenkins
+jenkinsswarmslave3:
+  container_name: jenkinsswarmslave3
+  build: jenkinsswarmslave3
   links:
     - jenkins

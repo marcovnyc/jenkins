@@ -51,3 +51,51 @@ if create:
 		launcher=jenkins.LAUNCHER_SSH,
 		launcher_params=params
 	)
+
+## Ad more nodes ###
+# jenkins docker slave
+params = {
+    'port': '22',
+    'username': 'jenkins',
+    'credentialsId': credentialsId,
+    'host': 'jenkinsdockerslave2'
+}
+create = True
+for node in j.get_nodes():
+    if node['name'] == 'jenkinsdockerslave2':
+        create = False
+if create:
+    j.create_node(
+        'jenkinsdockerslave1',
+        nodeDescription='my docker test slave',
+        remoteFS='/tmp',
+        labels='jenkinsdockerslave',
+        launcher=jenkins.LAUNCHER_SSH,
+        launcher_params=params
+    )
+
+
+ ### Add more slave ###
+
+
+# jenkins slave
+params = {
+	'port': '22',
+	'username': 'jenkins',
+	'credentialsId': credentialsId,
+	'host': 'jenkinsslave2'
+}
+create = True
+for node in j.get_nodes():
+	if node['name'] == 'jenkinsslave2':
+		create = False
+if create:
+	j.create_node(
+		'jenkinsslave1',
+		nodeDescription='my test slave',
+		remoteFS='/tmp',
+		labels='jenkinsslave',
+		launcher=jenkins.LAUNCHER_SSH,
+		launcher_params=params
+	)
+

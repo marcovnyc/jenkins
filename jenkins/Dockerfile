@@ -1,4 +1,4 @@
-FROM jenkins:2.7.3
+FROM jenkins:2.73.1
 
 # Assume root privs
 USER root
