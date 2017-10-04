@@ -43,13 +43,16 @@ echo Plugin install complete
 echo Setting up credentials
 pushd credentials
 ./jenkins_credentials.sh
+./jenkins_credentails2.sh
 python jenkins_credentials.py
+python jenkins_credentails2.py
 popd
 echo Setting up credentials complete
 
 echo Set up nodes
 pushd nodes
 python jenkins_node.py
+python jenkins_node2.py
 popd
 echo Set up nodes done
 
