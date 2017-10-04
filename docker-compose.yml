@@ -26,6 +26,7 @@ jenkins:
     - jenkinsslave1
     - jenkinsslave2
     - jenkinsdockerslave1
+    - jenkinsdockerslave2
   volumes:                                                                                                                                                                    
     - /var/run/docker.sock:/var/run/docker.sock                                                                                                                               
     - /var/lib/docker:/var/lib/docker           
